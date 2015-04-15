@@ -7,6 +7,7 @@ class Ability
   def initialize(user)
     if user.administrator?
       can :manage, :all
+      can :destroy, :all
       can :create, Course
       can :refresh, Course
       can :view, :participants_list
@@ -18,6 +19,7 @@ class Ability
       can :read_vm_log, Submission
     else
       can :read, :all
+      cannot :destroy, :all
 
       cannot :access_pghero
       cannot :read, User

@@ -81,6 +81,7 @@ class ParticipantsController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
+    authorize! :destroy, user
     user.destroy
     flash[:success] = 'User account deleted'
     redirect_to root_path
